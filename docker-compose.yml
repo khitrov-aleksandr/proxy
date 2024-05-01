@@ -1,0 +1,14 @@
+services:
+  proxy:
+    build:
+      context: .
+    volumes:
+      - ./templates:/etc/nginx/templates
+      - ./ssl:/etc/nginx/ssl
+      - ./.well-known:/var/www/.well-known
+      - ./letsencrypt:/etc/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      TZ: "Europe/Moscow"
